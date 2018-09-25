@@ -19,7 +19,7 @@ public class InsertionSort {
     }
 
     public static void main(String... input) {
-        int size = Integer.parseInt(input[0]);
+        int size = Integer.parseInt(input[0]); // taking size of array from command line argument
         int array[] = new int[size];
 
         // System.err.println("Worst case:Array");
