@@ -46,11 +46,11 @@ public class MergeSort {
         }
     }
 
-    static void sort(int arr[], int beg, int end) {
+    static void mergeSort(int arr[], int beg, int end) {
         if (beg < end) {
             int mid = (beg + end) / 2;
-            sort(arr, beg, mid);
-            sort(arr, mid + 1, end);
+            mergeSort(arr, beg, mid);
+            mergeSort(arr, mid + 1, end);
             merge(arr, beg, mid, end);
         }
     }
@@ -61,8 +61,8 @@ public class MergeSort {
         int array[] = new int[size];
 
         // System.err.println("Worst case:Array");
-        // for(int s=0;s<size;s++){
-        // array[s]=array[size-i-1];
+        // for (int s = 0; s < size; s++) {
+        // array[s] = size - s - 1;
         // }
         // System.err.println("Best case:Array");
         // for(int s=0;s<size;s++){
@@ -73,7 +73,7 @@ public class MergeSort {
             array[s] = (int) (Math.random() * 10000 + 1);
         }
         printArray(array);
-        sort(array, 0, array.length - 1);
+        mergeSort(array, 0, array.length - 1);
 
         System.out.println("Sorted Array: ");
         printArray(array);
