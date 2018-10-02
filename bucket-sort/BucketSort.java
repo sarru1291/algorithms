@@ -1,62 +1,36 @@
-import java.util.ArrayList;
-
-public class BucketSort {
-
-    static void printSingleArray(int array[]) {
-        for (int i : array) {
-            System.out.print(i + " ");
-        }
-        System.out.println("\n");
-    }
-
-    static void printDoubleArray(int array[][]) {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; array[i][j] != 0; j++) {
-                System.err.print(array[i][j] + " ");
-            }
-        }
-        System.err.println("\n");
-    }
-
-    static int[][] bucketSort(int[] array) {
-        int[][] bucketList = new int[array.length][array.length];
-
-        for (int k = 0; k < array.length; k++) {
-            int bucket = (array[k] * array.length) / (10000 + 1);
-            int j = 0;
-            bucketList[bucket][j] = array[k];
-            j++;
-
-            for (int i = bucket; i < array.length; i++) {
-                System.err.print(i);
-                for (int a = 0; bucketList[i][a] != 0; a++) {
-                    System.err.print(" " + bucketList[i][a] + " \n");
-                }
-            }
-
-        }
-        return bucketList;
-    }
-
-    public static void main(String... input) {
-        int size = Integer.parseInt(input[0]); // taking size of array from command line argument
-        int array[] = new int[size];
-
-        // System.err.println("Worst case:Array");
-        // for(int s=0;s<size;s++){
-        // array[s]=array[size-i-1];
-        // }
-        // System.err.println("Best case:Array");
-        // for(int s=0;s<size;s++){
-        // array[s]=s;
-        // }
-        System.err.println("Average case:Array");
-        for (int s = 0; s < size; s++) {
-            array[s] = (int) (Math.random() * 10000 + 1);
-        }
-        printSingleArray(array);
-        int[][] sortedArray = bucketSort(array);
-        System.out.println("Sorted Array: ");
-        // printDoubleArray(sortedArray);
-    }
+void Bucket_Sort(int array[], int n)  
+{    
+    int i, j;    
+    int count[n];   
+    for (i = 0; i < n; i++)  
+        count[i] = 0;  
+   
+    for (i = 0; i < n; i++)  
+        (count[array[i]])++;  
+   
+    for (i = 0, j = 0; i < n; i++)    
+        for(; count[i] > 0; (count[i])--)  
+            array[j++] = i;  
+}     
+/* End of Bucket_Sort() */  
+   
+/* The main() begins */  
+int main()  
+{  
+    int array[100], i, num;   
+   
+    printf("Enter the size of array : ");     
+    scanf("%d", &num);     
+    printf("Enter the %d elements to be sorted:\n",num);   
+    for (i = 0; i < num; i++)  
+        scanf("%d", &array[i]);   
+    printf("\nThe array of elements before sorting : \n");  
+    for (i = 0; i < num; i++)  
+        printf("%d ", array[i]);    
+    printf("\nThe array of elements after sorting : \n");   
+    Bucket_Sort(array, num);   
+    for (i = 0; i < num; i++)  
+        printf("%d ", array[i]);     
+    printf("\n");       
+    return 0;  
 }
