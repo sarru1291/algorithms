@@ -13,35 +13,42 @@ public class LongestChainSequence {
         }
     }
 
-    static void trace(int[][] m, String s1, String s2, int l1, int l2) {
-        int x = 0;
-        char lcs[] = new char[5];
+    // static void trace(int[][] m, String s1, String s2, int l1, int l2) {
+    // int x = 0;
+    // ArrayList<String> lcs = new ArrayList<String>();
 
-        int i = l1, j = l2;
-        while (i == l1 && j == l2) {
-            if (m[i][j] > m[i - 1][j] && m[i][j] > m[i][j - 1]) {
-                lcs[x] = s1.charAt(i);
-            }
-        }
+    // int i = (l1 - 1);
+    // int j = (l2 - 1);
+    // System.out.print(s1.charAt(i) + " " + i + " " + j + " " + m[i][j]);
+    // System.out.print(s1.charAt(i -= 1));
+    // System.out.print(s1.charAt(i -= 2));
 
-    }
+    // // for (int l = 0; l < lcs.size(); l++) {
+    // // System.out.println(lcs.get(l));
+    // // }
+    // }
 
     static void lcs(String s1, String s2, int l1, int l2) {
 
         int[][] matrix = new int[l1 + 1][l2 + 1];
-
+        char[] lcmElements = new char[l1];
+        int x = 0;
         for (int i = 0; i <= l1; i++) {
             for (int j = 0; j <= l2; j++) {
                 if (i == 0 || j == 0) {
                     matrix[i][j] = 0;
                 } else if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
                     matrix[i][j] = matrix[i - 1][j - 1] + 1;
+                    // lcmElements[x] = s1.charAt(i - 1);
+                    // x++;
+
                 } else
                     matrix[i][j] = Math.max(matrix[i - 1][j], matrix[i][j - 1]);
             }
         }
         printMatrix(matrix, l1, l2);
-        trace(matrix, s1, s2, l1, l2);
+        // trace(matrix, s1, s2, l1, l2);
+
     }
 
     public static void main(String[] input) {

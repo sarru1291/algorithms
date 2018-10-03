@@ -1,97 +1,92 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+class Bucket {
+    ArrayList<Integer> bucket = new ArrayList<Integer>();
+}
+
 public class BucketSort {
-
-    public static void main(String[] input) {
-
-        int[] array = new int[Integer.parseInt(input[0])];
-
-        Random rand = new Random();
-
-        for (int index = 0; index < array.length; index++) {
-
-            array[index] = rand.nextInt(50) + 1;
+    static void printArray(int array[]) {
+        for (int i : array) {
+            System.out.print(i + " ");
         }
-        for (int n : array) {
-            System.out.print(n + " ");
-        }
-        System.out.println();
-        System.out.println();
+        System.out.println("\n");
+    }
 
+    static void bucketSort(int[] array) {
         Bucket[] buckets = new Bucket[10];
-        for (int index = 0; index < buckets.length; index++) {
-            buckets[index] = new Bucket();
+        for (int i = 0; i < buckets.length; i++) {
+            buckets[i] = new Bucket();
         }
 
         for (int n : array) {
-            int bucketIndex = n * 10 / 51;
+            int bucketIndex = n * 10 / 10000;
             buckets[bucketIndex].bucket.add(n);
         }
 
-        for (Bucket n : buckets) {
-            System.out.print("Bucket ");
-            for (int num : n.bucket) {
+        // for (Bucket n : buckets) {
+        // System.out.print("Bucket ");
+        // for (int num : n.bucket) {
 
-                System.out.print(num + " ");
-            }
-            System.out.println();
-        }
-
-        System.out.println();
+        // System.out.print(num + " ");
+        // }
+        // System.out.println();
+        // }
 
         int index = 0;
         for (Bucket n : buckets) {
             insertionSort(n.bucket);
-
             for (int num : n.bucket) {
                 array[index] = num;
                 index++;
             }
 
         }
-        System.out.println();
 
-        for (Bucket n : buckets) {
-            System.out.print("Bucket ");
-            for (int num : n.bucket) {
+        // for (Bucket n : buckets) {
+        // System.out.print("Bucket ");
+        // for (int num : n.bucket) {
 
-                System.out.print(num + " ");
+        // System.out.print(num + " ");
+        // }
+        // System.out.println();
+        // }
+
+    }
+
+    public static void main(String[] input) {
+
+        int size = Integer.parseInt(input[0]);
+        int[] array = new int[size];
+
+        // System.err.println("Worst case:Array");
+        // for (int s = 0; s < size; s++) {
+        // array[s] = size - s - 1;
+        // }
+        // System.err.println("Best case:Array");
+        // for (int s = 0; s < size; s++) {
+        // array[s] = s;
+        // }
+        System.err.println("Average case:Array");
+        for (int s = 0; s < size; s++) {
+            array[s] = (int) (Math.random() * 10000 + 1);
+        }
+
+        printArray(array);
+        bucketSort(array);
+        System.out.println("Sorted Array: ");
+        printArray(array);
+    }
+
+    static void insertionSort(ArrayList<Integer> array) {
+        for (int i = 0; i < array.size() - 1; i++) {
+            int temp = array.get(i);
+            for (int j = i - 1; j >= 0 && temp < array.get(j); j--) {
+                array.set(j + 1, array.get(j));
+                array.set(j, temp);
+
             }
-            System.out.println();
         }
-
-        System.out.println();
-        for (int n : array) {
-            System.out.print(n + " ");
-        }
-        System.out.println();
-
     }
 
-    public static void insertionSort(ArrayList<Integer> array) {
-
-        for (int indexCounter = 0; indexCounter < array.size() - 1; indexCounter++) {
-
-            int placeHolder = indexCounter;
-
-            while (placeHolder >= 0 && array.get(placeHolder) > array.get(placeHolder + 1)) {
-                swap(array, placeHolder, placeHolder + 1);
-                placeHolder--;
-            }
-
-        }
-
-    }
-
-    public static void swap(ArrayList<Integer> array, int index1, int index2) {
-        int temp = array.get(index1);
-        array.set(index1, array.get(index2));
-        array.set(index2, temp);
-    }
-
-}
-
-class Bucket {
-    ArrayList<Integer> bucket = new ArrayList<Integer>();
 }
