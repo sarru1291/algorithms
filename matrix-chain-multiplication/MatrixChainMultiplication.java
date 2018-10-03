@@ -42,11 +42,12 @@ class MatrixChainMultiplication {
 
         System.out.println("Optimal Parenthesization is : ");
         printParenthesis(1, n - 1, n, bracket, name);
-        System.out.println("nOptimal Cost is : " + m[1][n - 1]);
+        System.out.println("\nOptimal Cost is : " + m[1][n - 1]);
     }
 
     public static void main(String... input) {
-        int arr[] = { 40, 20, 30, 10, 30 };
+        // int arr[] = { 40.20, 10, 30 };
+        int arr[] = { 1, 2, 3, 4 };
         int n = arr.length;
         // int n = sizeof(arr) / sizeof(arr[0]);
         matrixChainOrder(arr, n);
