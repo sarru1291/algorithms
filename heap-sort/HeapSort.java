@@ -7,7 +7,7 @@ class HeapSort {
         System.out.println("\n");
     }
 
-    static void heapify(int arr[], int size, int i) {
+    static void buildHeap(int arr[], int size, int i) {
         int largest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
@@ -22,19 +22,19 @@ class HeapSort {
             int temp = arr[i];
             arr[i] = arr[largest];
             arr[largest] = temp;
-            heapify(arr, size, largest);
+            buildHeap(arr, size, largest);
         }
     }
 
     static void heapSort(int arr[], int size) {
         int i;
         for (i = size / 2 - 1; i >= 0; i--)
-            heapify(arr, size, i);
+            buildHeap(arr, size, i);
         for (i = size - 1; i >= 0; i--) {
             int temp = arr[0];
             arr[0] = arr[i];
             arr[i] = temp;
-            heapify(arr, i, 0);
+            buildHeap(arr, i, 0);
         }
     }
 
