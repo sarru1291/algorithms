@@ -4,14 +4,7 @@ public class NaiveStringMatching {
         int textLength = text.length();
         int patternLength = pattern.length();
         int i, j;
-        for (i = 0; i <= textLength - patternLength; i++) {
-            // for (j = 0; j < patternLength; j++) {
-            // if (text.charAt(i + j) != pattern.charAt(j))
-            // break;
-            // }
-            // if (j == patternLength) {
-            // System.out.println("Pattern found at index: " + i);
-            // }
+        for (i = 0; i < (textLength - patternLength) + 1; i++) {
             int z = i;
             int count = 0;
             for (j = 0; j < patternLength; j++) {
@@ -21,7 +14,7 @@ public class NaiveStringMatching {
                 }
             }
             if (count == patternLength) {
-                System.out.println("Pattern fount at index: " + i);
+                System.out.println("Pattern found at index: " + i);
             }
         }
     }
