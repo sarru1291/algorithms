@@ -1,4 +1,10 @@
-// call(), apply() and bind() method is used for function borrowing with the provided data value.
+// call(), apply() and bind() methods are used for function borrowing.
+
+// an object can use method belonging to other object.
+
+// arguments can also be passed to the function with current data value.
+
+// call() method
 
 let student1={
     firstName:"bill",
